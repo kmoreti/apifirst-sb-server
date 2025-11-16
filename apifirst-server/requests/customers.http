@@ -1,1 +1,6 @@
+### Get All Customers
 GET http://localhost:8080/v1/customers
+
+
+### Get Customer by ID
+GET http://localhost:8080/v1/customers/4a80e125-35f0-4ee2-9b2e-233014bb0493
