@@ -1,32 +1,75 @@
 package com.moretii.apifirstserver.repositories;
 
+import com.moreti.apifirst.model.Address;
 import com.moreti.apifirst.model.Customer;
+import com.moreti.apifirst.model.PaymentMethod;
 import org.springframework.stereotype.Repository;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.time.OffsetDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Repository
-public class CustomerRepositoryImpl implements CustomerRepository{
+public class CustomerRepositoryImpl implements CustomerRepository {
 
     private final Map<UUID, Customer> entityMap = new HashMap<>();
+
     @Override
     public <S extends Customer> S save(S entity) {
         UUID id = UUID.randomUUID();
 
-        Customer customer = Customer.builder()
-                .id(id)
-                .billToAddress(entity.getBillToAddress())
-                .shipToAddress(entity.getShipToAddress())
-                .email(entity.getEmail())
+        Customer.CustomerBuilder builder = Customer.builder();
+
+        builder.id(id);
+
+        if (entity.getBillToAddress() != null) {
+            builder.billToAddress(Address.builder().
+                    id(UUID.randomUUID())
+                    .addressLine1(entity.getBillToAddress().getAddressLine1())
+                    .addressLine2(entity.getBillToAddress().getAddressLine2())
+                    .city(entity.getBillToAddress().getCity())
+                    .state(entity.getBillToAddress().getState())
+                    .zip(entity.getBillToAddress().getZip())
+                    .dateCreated(OffsetDateTime.now())
+                    .dateUpdated(OffsetDateTime.now())
+                    .build());
+        }
+
+        if (entity.getShipToAddress() != null) {
+            builder.shipToAddress(Address.builder().
+                    id(UUID.randomUUID())
+                    .addressLine1(entity.getShipToAddress().getAddressLine1())
+                    .addressLine2(entity.getShipToAddress().getAddressLine2())
+                    .city(entity.getShipToAddress().getCity())
+                    .state(entity.getShipToAddress().getState())
+                    .zip(entity.getShipToAddress().getZip())
+                    .dateCreated(OffsetDateTime.now())
+                    .dateUpdated(OffsetDateTime.now())
+                    .build());
+        }
+
+        if (entity.getPaymentMethods() != null && !entity.getPaymentMethods().isEmpty()) {
+            builder.paymentMethods(
+                    entity.getPaymentMethods().stream()
+                            .map(paymentMethod -> PaymentMethod.builder()
+                                    .id(UUID.randomUUID())
+                                    .displayName(paymentMethod.getDisplayName())
+                                    .cardNumber(paymentMethod.getCardNumber())
+                                    .expiryMonth(paymentMethod.getExpiryMonth())
+                                    .expiryYear(paymentMethod.getExpiryYear())
+                                    .cvv(paymentMethod.getCvv())
+                                    .dateCreated(OffsetDateTime.now())
+                                    .dateUpdated(OffsetDateTime.now())
+                                    .build())
+                            .collect(Collectors.toList()));
+        }
+
+        Customer customer = builder.email(entity.getEmail())
                 .name(entity.getName())
                 .phone(entity.getPhone())
-                .dateCreated(entity.getDateCreated())
-                .dateUpdated(entity.getDateUpdated())
+                .dateCreated(OffsetDateTime.now())
+                .dateUpdated(OffsetDateTime.now())
                 .build();
         entityMap.put(id, customer);
         return (S) customer;
