@@ -6,9 +6,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.StreamSupport;
-
-import static java.util.stream.Collectors.toList;
 
 @Service
 @RequiredArgsConstructor
@@ -19,5 +18,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public List<Customer> listCustomers() {
         return StreamSupport.stream(customerRepository.findAll().spliterator(), false).toList();
+    }
+
+    @Override
+    public Customer getCustomerById(UUID customerId) {
+        return customerRepository.findById(customerId).orElseThrow();
     }
 }
