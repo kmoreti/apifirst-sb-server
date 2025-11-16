@@ -1,0 +1,5 @@
+### Get All Products
+GET http://localhost:8080/v1/products
+
+### Get Product by ID
+GET http://localhost:8080/v1/products/d27b9043-48e4-4093-bce6-b2bf21174c45

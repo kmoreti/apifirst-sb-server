@@ -1,15 +1,13 @@
 package com.moretii.apifirstserver.bootstrap;
 
-import com.moreti.apifirst.model.Address;
-import com.moreti.apifirst.model.Customer;
-import com.moreti.apifirst.model.Name;
-import com.moreti.apifirst.model.PaymentMethod;
+import com.moreti.apifirst.model.*;
 import com.moretii.apifirstserver.repositories.CustomerRepository;
+import com.moretii.apifirstserver.repositories.OrderRepository;
+import com.moretii.apifirstserver.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.time.OffsetDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -18,6 +16,8 @@ import java.util.UUID;
 public class DataLoader implements CommandLineRunner {
 
     private final CustomerRepository customerRepository;
+    private final ProductRepository productRepository;
+    private final OrderRepository orderRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -71,7 +71,133 @@ public class DataLoader implements CommandLineRunner {
                         .build()))
                 .build();
 
-        customerRepository.save(customer1);
-        customerRepository.save(customer2);
+        Customer savedCustomer1 = customerRepository.save(customer1);
+        Customer savedCustomer2 = customerRepository.save(customer2);
+
+        Product product1 = Product.builder().description("Product 1")
+                .price("19.99")
+                .cost("9.99")
+                .categories(List.of(
+                        Category.builder()
+                                .id(UUID.randomUUID())
+                                .category("Category A")
+                                .description("Category A Description")
+                                .build(),
+                        Category.builder()
+                                .id(UUID.randomUUID())
+                                .category("Category B")
+                                .description("Category B Description")
+                                .build()
+                ))
+                .images(List.of(
+                        Image.builder()
+                                .id(UUID.randomUUID())
+                                .url("http://example.com/image1.jpg")
+                                .altText("Image 1")
+                                .build(),
+                        Image.builder()
+                                .id(UUID.randomUUID())
+                                .url("http://example.com/image2.jpg")
+                                .altText("Image 2")
+                                .build()
+                ))
+                .dimensions(Dimensions.builder()
+                        .length(10)
+                        .width(5)
+                        .height(2)
+                        .build())
+                .build();
+
+        Product product2 = Product.builder().description("Product 2")
+                .price("29.99")
+                .cost("14.99")
+                .categories(List.of(
+                        Category.builder()
+                                .category("Category C")
+                                .description("Category C Description")
+                                .build()
+                ))
+                .images(List.of(
+                        Image.builder()
+                                .url("http://example.com/image3.jpg")
+                                .altText("Image 3")
+                                .build()
+                ))
+                .dimensions(Dimensions.builder()
+                        .length(15)
+                        .width(7)
+                        .height(3)
+                        .build())
+                .build();
+
+        Product savedProduct1 = productRepository.save(product1);
+        Product savedProduct2 = productRepository.save(product2);
+
+        Order order1 = Order.builder()
+                .customer(OrderCustomer.builder()
+                        .id(savedCustomer1.getId())
+                        .name(savedCustomer1.getName())
+                        .billToAddress(savedCustomer1.getBillToAddress())
+                        .shipToAddress(savedCustomer1.getShipToAddress())
+                        .email(savedCustomer1.getEmail())
+                        .phone(savedCustomer1.getPhone())
+                        .selectedPaymentMethod(savedCustomer1.getPaymentMethods().get(0))
+                        .build())
+                .orderStatus(Order.OrderStatusEnum.NEW)
+                .shipmentInfo("shipment info")
+                .orderLines(List.of(OrderLine.builder()
+                                .product(OrderProduct.builder()
+                                        .id(savedProduct1.getId())
+                                        .description(product1.getDescription())
+                                        .price(product1.getPrice())
+                                        .build())
+                                .orderQuantity(1)
+                                .shipQuantity(1)
+                                .build(),
+                        OrderLine.builder()
+                                .product(OrderProduct.builder()
+                                        .id(savedProduct2.getId())
+                                        .description(product2.getDescription())
+                                        .price(product1.getPrice())
+                                        .build())
+                                .orderQuantity(1)
+                                .shipQuantity(1)
+                                .build()))
+                .build();
+
+        Order order2 = Order.builder()
+                .customer(OrderCustomer.builder()
+                        .id(savedCustomer2.getId())
+                        .name(savedCustomer2.getName())
+                        .billToAddress(savedCustomer2.getBillToAddress())
+                        .shipToAddress(savedCustomer2.getShipToAddress())
+                        .email(savedCustomer2.getEmail())
+                        .phone(savedCustomer2.getPhone())
+                        .selectedPaymentMethod(savedCustomer2.getPaymentMethods().get(0))
+                        .build())
+                .orderStatus(Order.OrderStatusEnum.NEW)
+                .shipmentInfo("shipment info #2")
+                .orderLines(List.of(OrderLine.builder()
+                                .product(OrderProduct.builder()
+                                        .id(savedProduct1.getId())
+                                        .description(product1.getDescription())
+                                        .price(product1.getPrice())
+                                        .build())
+                                .orderQuantity(1)
+                                .shipQuantity(1)
+                                .build(),
+                        OrderLine.builder()
+                                .product(OrderProduct.builder()
+                                        .id(savedProduct2.getId())
+                                        .description(product2.getDescription())
+                                        .price(product1.getPrice())
+                                        .build())
+                                .orderQuantity(1)
+                                .shipQuantity(1)
+                                .build()))
+                .build();
+
+        orderRepository.save(order1);
+        orderRepository.save(order2);
     }
 }
