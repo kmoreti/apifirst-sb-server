@@ -1,0 +1,5 @@
+### Get All Orders
+GET http://localhost:8080/v1/orders
+
+### Get Order by ID
+GET http://localhost:8080/v1/orders/0515ba36-a645-4566-8265-5cd74dde81f6

@@ -71,7 +71,9 @@ public class CustomerRepositoryImpl implements CustomerRepository {
                 .dateCreated(OffsetDateTime.now())
                 .dateUpdated(OffsetDateTime.now())
                 .build();
+
         entityMap.put(id, customer);
+
         return (S) customer;
     }
 
