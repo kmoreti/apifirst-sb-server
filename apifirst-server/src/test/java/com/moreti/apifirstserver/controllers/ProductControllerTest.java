@@ -2,7 +2,6 @@ package com.moreti.apifirstserver.controllers;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 
@@ -12,23 +11,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-public class CustomerControllerTest extends BaseTest{
+public class ProductControllerTest extends BaseTest{
 
-    @DisplayName("Test List Customers")
+    @DisplayName("Test List Products")
     @Test
-    void testListCustomers() throws Exception{
-        mockMvc.perform(get(CustomerController.BASE_URL)
-                        .accept(MediaType.APPLICATION_JSON))
+    void testListProducts() throws Exception{
+        mockMvc.perform(get(ProductController.BASE_URL)
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", greaterThan(0)));
     }
 
-    @DisplayName("Get Customer by ID")
+    @DisplayName("Test Get Product by ID")
     @Test
-    void testGetCustomerById() throws Exception{
-        mockMvc.perform(get(CustomerController.BASE_URL + "/" + testCustomer.getId())
-                        .accept(MediaType.APPLICATION_JSON))
+    void testGetProductById() throws Exception{
+        mockMvc.perform(get(ProductController.BASE_URL + "/" + testProduct.getId())
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(testCustomer.getId().toString()));
+                .andExpect(jsonPath("$.id").value(testProduct.getId().toString()));
     }
 }
