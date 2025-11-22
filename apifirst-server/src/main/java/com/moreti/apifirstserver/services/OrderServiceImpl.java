@@ -1,7 +1,7 @@
-package com.moretii.apifirstserver.services;
+package com.moreti.apifirstserver.services;
 
 import com.moreti.apifirst.model.Order;
-import com.moretii.apifirstserver.repositories.OrderRepository;
+import com.moreti.apifirstserver.repositories.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

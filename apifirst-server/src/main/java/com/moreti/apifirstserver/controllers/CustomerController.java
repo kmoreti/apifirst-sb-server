@@ -1,7 +1,7 @@
-package com.moretii.apifirstserver.controllers;
+package com.moreti.apifirstserver.controllers;
 
 import com.moreti.apifirst.model.Customer;
-import com.moretii.apifirstserver.services.CustomerService;
+import com.moreti.apifirstserver.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
-import static com.moretii.apifirstserver.controllers.CustomerController.BASE_URL;
+import static com.moreti.apifirstserver.controllers.CustomerController.BASE_URL;
 
 @RestController
 @AllArgsConstructor
