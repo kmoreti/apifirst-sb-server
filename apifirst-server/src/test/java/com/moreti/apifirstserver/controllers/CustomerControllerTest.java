@@ -18,10 +18,20 @@ public class CustomerControllerTest extends BaseTest{
     @DisplayName("Test List Customers")
     @Test
     void testListCustomers() throws Exception{
-        MvcResult result = mockMvc.perform(get(CustomerController.BASE_URL)
+        mockMvc.perform(get(CustomerController.BASE_URL)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()", greaterThan(0)))
+                .andReturn();
+    }
+
+    @DisplayName("Get Customer by ID")
+    @Test
+    void testGetCustomerById() throws Exception{
+        MvcResult result = mockMvc.perform(get(CustomerController.BASE_URL + "/" + testCustomer.getId())
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(testCustomer.getId().toString()))
                 .andReturn();
     }
 }
