@@ -1,6 +1,7 @@
 package com.moreti.apifirstserver.controllers;
 
 import com.moreti.apifirst.model.Customer;
+import com.moreti.apifirst.model.Order;
 import com.moreti.apifirst.model.Product;
 import com.moreti.apifirstserver.repositories.CustomerRepository;
 import com.moreti.apifirstserver.repositories.OrderRepository;
@@ -27,6 +28,7 @@ public class BaseTest {
 
     Customer testCustomer;
     Product testProduct;
+    Order testOrder;
 
     public MockMvc mockMvc;
 
@@ -37,5 +39,6 @@ public class BaseTest {
 
         testCustomer = customerRepository.findAll().iterator().next();
         testProduct = productRepository.findAll().iterator().next();
+        testOrder = orderRepository.findAll().iterator().next();
     }
 }
