@@ -14,6 +14,11 @@
 	<name>apifirst-server</name>
 	<description>API first with Spring Boot</description>
 
+    <properties>
+        <swagger-request-validator.version>2.46.0</swagger-request-validator.version>
+
+    </properties>
+
 	<dependencies>
         <dependency>
             <groupId>com.moreti</groupId>
@@ -43,6 +48,18 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>com.atlassian.oai</groupId>
+            <artifactId>swagger-request-validator-spring-webmvc</artifactId>
+            <version>${swagger-request-validator.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
