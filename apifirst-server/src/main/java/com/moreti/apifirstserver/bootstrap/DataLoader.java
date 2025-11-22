@@ -1,9 +1,9 @@
-package com.moretii.apifirstserver.bootstrap;
+package com.moreti.apifirstserver.bootstrap;
 
 import com.moreti.apifirst.model.*;
-import com.moretii.apifirstserver.repositories.CustomerRepository;
-import com.moretii.apifirstserver.repositories.OrderRepository;
-import com.moretii.apifirstserver.repositories.ProductRepository;
+import com.moreti.apifirstserver.repositories.CustomerRepository;
+import com.moreti.apifirstserver.repositories.OrderRepository;
+import com.moreti.apifirstserver.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

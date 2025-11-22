@@ -1,7 +1,7 @@
-package com.moretii.apifirstserver.services;
+package com.moreti.apifirstserver.services;
 
 import com.moreti.apifirst.model.Product;
-import com.moretii.apifirstserver.repositories.ProductRepository;
+import com.moreti.apifirstserver.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

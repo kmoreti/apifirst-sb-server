@@ -1,4 +1,4 @@
-package com.moretii.apifirstserver;
+package com.moreti.apifirstserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

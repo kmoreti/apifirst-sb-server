@@ -1,4 +1,4 @@
-package com.moretii.apifirstserver.repositories;
+package com.moreti.apifirstserver.repositories;
 
 import com.moreti.apifirst.model.Customer;
 import org.springframework.data.repository.CrudRepository;

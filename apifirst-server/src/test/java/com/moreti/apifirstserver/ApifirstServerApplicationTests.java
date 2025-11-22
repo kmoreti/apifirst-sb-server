@@ -1,6 +1,6 @@
-package com.moretii.apifirstserver;
+package com.moreti.apifirstserver;
 
-import com.moretii.apifirstserver.repositories.CustomerRepository;
+import com.moreti.apifirstserver.repositories.CustomerRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
