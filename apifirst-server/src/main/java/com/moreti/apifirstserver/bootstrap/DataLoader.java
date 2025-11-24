@@ -1,6 +1,7 @@
 package com.moreti.apifirstserver.bootstrap;
 
 import com.moreti.apifirst.model.*;
+import com.moreti.apifirstserver.domain.*;
 import com.moreti.apifirstserver.repositories.CustomerRepository;
 import com.moreti.apifirstserver.repositories.OrderRepository;
 import com.moreti.apifirstserver.repositories.ProductRepository;
@@ -143,7 +144,7 @@ public class DataLoader implements CommandLineRunner {
                         .phone(savedCustomer1.getPhone())
                         .selectedPaymentMethod(savedCustomer1.getPaymentMethods().get(0))
                         .build())
-                .orderStatus(Order.OrderStatusEnum.NEW)
+                .orderStatus(OrderStatusEnum.NEW)
                 .shipmentInfo("shipment info")
                 .orderLines(List.of(OrderLine.builder()
                                 .product(OrderProduct.builder()
@@ -175,7 +176,7 @@ public class DataLoader implements CommandLineRunner {
                         .phone(savedCustomer2.getPhone())
                         .selectedPaymentMethod(savedCustomer2.getPaymentMethods().get(0))
                         .build())
-                .orderStatus(Order.OrderStatusEnum.NEW)
+                .orderStatus(OrderStatusEnum.NEW)
                 .shipmentInfo("shipment info #2")
                 .orderLines(List.of(OrderLine.builder()
                                 .product(OrderProduct.builder()

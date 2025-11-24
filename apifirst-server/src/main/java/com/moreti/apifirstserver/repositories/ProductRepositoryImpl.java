@@ -1,9 +1,9 @@
 package com.moreti.apifirstserver.repositories;
 
-import com.moreti.apifirst.model.Category;
-import com.moreti.apifirst.model.Dimensions;
-import com.moreti.apifirst.model.Image;
-import com.moreti.apifirst.model.Product;
+import com.moreti.apifirstserver.domain.Category;
+import com.moreti.apifirstserver.domain.Dimensions;
+import com.moreti.apifirstserver.domain.Image;
+import com.moreti.apifirstserver.domain.Product;
 import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;

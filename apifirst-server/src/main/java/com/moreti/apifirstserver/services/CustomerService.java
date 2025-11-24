@@ -1,6 +1,6 @@
 package com.moreti.apifirstserver.services;
 
-import com.moreti.apifirst.model.Customer;
+import com.moreti.apifirstserver.domain.Customer;
 
 import java.util.List;
 import java.util.UUID;

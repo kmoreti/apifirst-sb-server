@@ -1,6 +1,6 @@
 package com.moreti.apifirstserver.services;
 
-import com.moreti.apifirst.model.Product;
+import com.moreti.apifirstserver.domain.Product;
 import com.moreti.apifirstserver.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,5 +23,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getProductById(UUID productId) {
         return productRepository.findById(productId).orElseThrow();
+    }
+
+    @Override
+    public Product saveNewProduct(Product product) {
+        return productRepository.save(product);
     }
 }

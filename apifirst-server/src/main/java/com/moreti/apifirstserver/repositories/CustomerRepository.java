@@ -1,6 +1,6 @@
 package com.moreti.apifirstserver.repositories;
 
-import com.moreti.apifirst.model.Customer;
+import com.moreti.apifirstserver.domain.Customer;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;

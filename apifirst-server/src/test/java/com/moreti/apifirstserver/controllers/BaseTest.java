@@ -1,8 +1,8 @@
 package com.moreti.apifirstserver.controllers;
 
-import com.moreti.apifirst.model.Customer;
-import com.moreti.apifirst.model.Order;
-import com.moreti.apifirst.model.Product;
+import com.moreti.apifirstserver.domain.Customer;
+import com.moreti.apifirstserver.domain.Order;
+import com.moreti.apifirstserver.domain.Product;
 import com.moreti.apifirstserver.repositories.CustomerRepository;
 import com.moreti.apifirstserver.repositories.OrderRepository;
 import com.moreti.apifirstserver.repositories.ProductRepository;

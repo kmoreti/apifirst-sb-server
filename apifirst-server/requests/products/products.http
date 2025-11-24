@@ -2,4 +2,44 @@
 GET http://localhost:8080/v1/products
 
 ### Get Product by ID
-GET http://localhost:8080/v1/products/d27b9043-48e4-4093-bce6-b2bf21174c45
+GET http://localhost:8080/v1/products/40a0d61d-b8f6-47ad-aa08-429dd62e5e07
+
+
+### Create New Product with invalid Data
+POST http://localhost:8080/v1/products
+Content-Type: application/json
+
+{
+  "name": "New Product",
+  "description": "This is a new product.",
+  "price": 29.99,
+  "stock": 100
+}
+
+
+### Create New Product
+POST http://localhost:8080/v1/products
+Content-Type: application/json
+
+{
+  "description": "Product 3",
+  "dimensions": {
+      "length": 8,
+      "width": 9,
+      "height": 5
+  },
+  "categories": [
+    {
+      "category": "Category D",
+      "description": "Category D Description"
+    }
+  ],
+  "images": [
+    {
+      "url": "http://example.com/image4.jpg",
+      "altText": "Image 4"
+    }
+  ],
+  "price": "59.99",
+  "cost": "25.99"
+}

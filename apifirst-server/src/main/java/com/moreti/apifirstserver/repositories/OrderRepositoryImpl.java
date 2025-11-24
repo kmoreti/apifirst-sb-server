@@ -1,7 +1,7 @@
 package com.moreti.apifirstserver.repositories;
 
-import com.moreti.apifirst.model.Order;
-import com.moreti.apifirst.model.OrderLine;
+import com.moreti.apifirstserver.domain.Order;
+import com.moreti.apifirstserver.domain.OrderLine;
 import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;

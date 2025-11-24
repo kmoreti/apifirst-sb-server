@@ -1,6 +1,6 @@
 package com.moreti.apifirstserver.controllers;
 
-import com.moreti.apifirst.model.Order;
+import com.moreti.apifirst.model.OrderDto;
 import com.moreti.apifirstserver.services.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,13 +25,15 @@ public class OrderController {
     private final OrderService orderService;
 
     @GetMapping
-    public ResponseEntity<List<Order>> listOrders() {
-        List<Order> orders = orderService.listOrders();
-        return ResponseEntity.ok(orders);
+    public ResponseEntity<List<OrderDto>> listOrders() {
+//        List<Order> orders = orderService.listOrders();
+//        return ResponseEntity.ok(orders);
+        return ResponseEntity.ok(Collections.emptyList());
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<Order> getOrderById(@PathVariable("orderId") UUID orderId) {
-        return ResponseEntity.ok(orderService.getOrderById(orderId));
+    public ResponseEntity<OrderDto> getOrderById(@PathVariable("orderId") UUID orderId) {
+//        return ResponseEntity.ok(orderService.getOrderById(orderId));
+        return ResponseEntity.ok(null);
     }
 }

@@ -1,8 +1,8 @@
 package com.moreti.apifirstserver.repositories;
 
-import com.moreti.apifirst.model.Address;
-import com.moreti.apifirst.model.Customer;
-import com.moreti.apifirst.model.PaymentMethod;
+import com.moreti.apifirstserver.domain.Address;
+import com.moreti.apifirstserver.domain.Customer;
+import com.moreti.apifirstserver.domain.PaymentMethod;
 import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;

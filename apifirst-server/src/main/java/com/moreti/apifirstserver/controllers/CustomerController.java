@@ -1,6 +1,8 @@
 package com.moreti.apifirstserver.controllers;
 
-import com.moreti.apifirst.model.Customer;
+import com.moreti.apifirst.model.CustomerDto;
+import com.moreti.apifirstserver.domain.Customer;
+import com.moreti.apifirstserver.mappers.CustomerMapper;
 import com.moreti.apifirstserver.services.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,14 +25,17 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
+    private final CustomerMapper customerMapper;
+
     @GetMapping
-    public ResponseEntity<List<Customer>> listCustomers() {
+    public ResponseEntity<List<CustomerDto>> listCustomers() {
         List<Customer> customers = customerService.listCustomers();
-        return ResponseEntity.ok(customers);
+        return ResponseEntity.ok(customers.stream().map(customerMapper::customerToDto).toList());
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable("customerId") UUID customerId) {
-        return ResponseEntity.ok(customerService.getCustomerById(customerId));
+    public ResponseEntity<CustomerDto> getCustomerById(@PathVariable("customerId") UUID customerId) {
+        return ResponseEntity.ok(new CustomerDto());
+//        return ResponseEntity.ok(customerMapper.customerToDto(customerService.getCustomerById(customerId)));
     }
 }
