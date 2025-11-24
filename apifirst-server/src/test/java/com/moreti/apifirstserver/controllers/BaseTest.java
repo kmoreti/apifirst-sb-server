@@ -1,5 +1,6 @@
 package com.moreti.apifirstserver.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.moreti.apifirstserver.domain.Customer;
 import com.moreti.apifirstserver.domain.Order;
 import com.moreti.apifirstserver.domain.Product;
@@ -25,6 +26,8 @@ public class BaseTest {
     WebApplicationContext webApplicationContext;
     @Autowired
     Filter validationFilter;
+    @Autowired
+    ObjectMapper objectMapper;
 
     Customer testCustomer;
     Product testProduct;
